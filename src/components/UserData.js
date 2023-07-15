@@ -1,6 +1,5 @@
 import { Component } from "react";
 
-
 class UserData extends Component {
   render() {
     // const user = this.props.user;
@@ -12,7 +11,7 @@ class UserData extends Component {
             <div className="user-profile">
               <div className="username-dt">
                 <div className="usr-pic">
-                  <img src={"./images/" + user.username + ".jpeg" } alt="" />
+                  <img src={"./images/" + user.username + ".jpeg"} alt="" />
                 </div>
               </div>
               <div className="user-specs">
