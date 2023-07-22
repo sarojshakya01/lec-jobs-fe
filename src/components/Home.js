@@ -5,34 +5,43 @@ import PostTopBar from "./PostTopBar";
 import PostSection from "./PostSection";
 import TagsSection from "./TagsSection";
 
-const userData = {
-  email: "test@test.com",
-  username: "saroj",
-  fullname: "Test User",
-  title: "Software Developer",
-  skills: ["JS", "PHP", "JAVA"],
-  address: "Kathmnadu, Nepal",
-  job_type: "Full Time",
-  id: 1,
-  is_active: true,
-  followers: ["username123", "user234", "user543"],
-  followings: ["username123", "user234", "user543", "user555"],
-};
-
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+    };
+  }
+  componentDidMount() {
+    fetch("http://localhost:5001/api/v1/user")
+      .then((resp) => resp.json())
+      .then((data) => {
+        this.setState({ user: data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
   render() {
+    const user = this.state.user;
+    // const user = { ...this.state.user };
+    // const { user } = this.state;
+    if (!Object.keys(user).length) {
+      return <div></div>
+    }
     return (
       <div className="wrapper">
-        <Header user={userData} />
+        <Header user={user} />
         <main>
           <div className="main-section">
             <div className="container">
               <div className="main-section-data">
                 <div className="row">
-                  <UserData user={userData} />
+                  <UserData user={user} />
                   <div className="col-lg-6 col-md-8 no-pd">
                     <div className="main-ws-sec">
-                      <PostTopBar user={userData} />
+                      <PostTopBar user={user} />
                       <PostSection />
                     </div>
                   </div>

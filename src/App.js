@@ -1,12 +1,15 @@
-import './App.css';
-import Home from './components/Home';
+import { Component } from "react";
+import "./App.css";
+import Home from "./components/Home";
 // import Login from './components/Login';
 
-function App() {
-  return (
-    // <Login/>
-    <Home/>
-  );
+class App extends Component {
+  render() {
+    return (
+      // <Login/>
+      <Home />
+    );
+  }
 }
 
 export default App;

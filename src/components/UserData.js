@@ -11,22 +11,22 @@ class UserData extends Component {
             <div className="user-profile">
               <div className="username-dt">
                 <div className="usr-pic">
-                  <img src={"./images/" + user.username + ".jpeg"} alt="" />
+                  <img src={"./images/" + user?.username + ".jpeg"} alt="" />
                 </div>
               </div>
               <div className="user-specs">
-                <h3>{user.fullname}</h3>
-                <span>{user.title}</span>
+                <h3>{user?.fullname}</h3>
+                <span>{user?.title}</span>
               </div>
             </div>
             <ul className="user-fw-status">
               <li>
                 <h4>Following</h4>
-                <span>{user.followings.length}</span>
+                <span>{user?.followings?.length}</span>
               </li>
               <li>
                 <h4>Followers</h4>
-                <span>{user.followers.length}</span>
+                <span>{user?.followers?.length}</span>
               </li>
               <li>
                 <a href="./my-profile.html" title="">
