@@ -28,7 +28,7 @@ class Home extends Component {
     // const user = { ...this.state.user };
     // const { user } = this.state;
     if (!Object.keys(user).length) {
-      return <div></div>
+      return <div></div>;
     }
     return (
       <div className="wrapper">

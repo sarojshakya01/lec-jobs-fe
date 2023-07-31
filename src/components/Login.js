@@ -1,6 +1,21 @@
 import { Component } from "react";
 
 class Login extends Component {
+  handleSignUpClick() {
+    fetch("http://localhost:5001/api/v1/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log("Created new user", data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
   render() {
     return (
       <div className="sign-in-page" style={{ background: "cornflowerblue" }}>
@@ -203,7 +218,11 @@ class Login extends Component {
                           </div>
                         </div>
                         <div className="col-lg-6">
-                          <button type="submit" value="submit">
+                          <button
+                            type="button"
+                            value="submit"
+                            onClick={this.handleSignUpClick}
+                          >
                             Get Started
                           </button>
                         </div>
