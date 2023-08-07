@@ -1,6 +1,11 @@
 import { Component } from "react";
 
 class Login extends Component {
+  constructor() {
+    super();
+    this.handleSignInClick = this.handleSignInClick.bind(this);
+  }
+
   handleSignUpClick(evnt) {
     // get SignForm HTML Element from form ID
     const formElem = document.getElementById("signup-form");
@@ -22,6 +27,9 @@ class Login extends Component {
       return;
     }
 
+    // clear error message if any
+    document.querySelector("#err").innerHTML = "";
+
     // call Backend API user create API
     fetch("http://localhost:5001/api/v1/user", {
       method: "POST",
@@ -41,9 +49,57 @@ class Login extends Component {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log("Created new user", data);
+        if (data.error) {
+          document.querySelector("#err").innerHTML = data.error;
+        } else {
+          document.querySelector("#err").innerHTML = "Signup Successfull";
+        }
       })
       .catch((err) => {
+        //  display error
+        document.querySelector("#err").innerHTML = err.message;
+        console.error(err);
+      });
+  }
+
+  handleSignInClick(evnt) {
+    const formElem = document.getElementById("login-form");
+
+    // select input fields of signin form and read their values
+    const username = formElem.querySelector("#username").value;
+    const password = formElem.querySelector("#password").value;
+
+    if (!username || !password) {
+      document.querySelector("#err").innerHTML = "Username/Password required";
+      return;
+    }
+    // clear error message if any
+    document.querySelector("#err").innerHTML = "";
+
+    // call Backend API user create API
+    fetch("http://localhost:5001/api/v1/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.error) {
+          document.querySelector("#err").innerHTML = data.error;
+        } else {
+          {
+            this.props.loginUser(data.data);
+          }
+        }
+      })
+      .catch((err) => {
+        //  display error
+        document.querySelector("#err").innerHTML = err.message;
         console.error(err);
       });
   }
@@ -57,16 +113,8 @@ class Login extends Component {
               <div className="col-lg-5">
                 <div className="cmp-info">
                   <div className="cm-logo">
-                    <img
-                      src="images/lec.png"
-                      alt=""
-                      style={{ width: "100px" }}
-                    />
-                    <p>
-                      LEC, is a global freelancing platform and social
-                      networking where businesses and independent professionals
-                      connect and collaborate remotely
-                    </p>
+                    <img src="images/lec.png" alt="" style={{ width: "100px" }} />
+                    <p>LEC, is a global freelancing platform and social networking where businesses and independent professionals connect and collaborate remotely</p>
                   </div>
                   <img src="images/lec-full.png" alt="" />
                 </div>
@@ -91,23 +139,13 @@ class Login extends Component {
                       <div className="row">
                         <div className="col-lg-6">
                           <div className="sn-field">
-                            <input
-                              type="text"
-                              name="username"
-                              id="username"
-                              placeholder="Username"
-                            />
+                            <input type="text" name="username" id="username" placeholder="Username" />
                             <i className="la la-user"></i>
                           </div>
                         </div>
                         <div className="col-lg-6">
                           <div className="sn-field">
-                            <input
-                              type="password"
-                              name="password"
-                              id="password"
-                              placeholder="Password"
-                            />
+                            <input type="password" name="password" id="password" placeholder="Password" />
                             <i className="la la-lock"></i>
                           </div>
                         </div>
@@ -123,7 +161,7 @@ class Login extends Component {
                           </div>
                         </div>
                         <div className="col-lg-12">
-                          <button type="submit" value="submit">
+                          <button type="button" value="submit" onClick={this.handleSignInClick}>
                             Sign in
                           </button>
                         </div>
@@ -136,45 +174,25 @@ class Login extends Component {
                       <div className="row">
                         <div className="col-lg-6">
                           <div className="sn-field">
-                            <input
-                              type="text"
-                              name="username"
-                              id="signin-username"
-                              placeholder="Username"
-                            />
+                            <input type="text" name="username" id="signin-username" placeholder="Username" />
                             <i className="la la-user"></i>
                           </div>
                         </div>
                         <div className="col-lg-6">
                           <div className="sn-field">
-                            <input
-                              type="text"
-                              name="email"
-                              id="email"
-                              placeholder="Email"
-                            />
+                            <input type="email" name="email" id="email" placeholder="Email" />
                             <i className="la la-envelope"></i>
                           </div>
                         </div>
                         <div className="col-lg-6">
                           <div className="sn-field">
-                            <input
-                              type="text"
-                              name="fullname"
-                              id="fullname"
-                              placeholder="Full Name"
-                            />
+                            <input type="text" name="fullname" id="fullname" placeholder="Full Name" />
                             <i className="la la-user"></i>
                           </div>
                         </div>
                         <div className="col-lg-6">
                           <div className="sn-field">
-                            <input
-                              type="text"
-                              name="title"
-                              id="title"
-                              placeholder="Title"
-                            />
+                            <input type="text" name="title" id="title" placeholder="Title" />
                             <i className="la la-user"></i>
                           </div>
                         </div>
@@ -193,45 +211,25 @@ class Login extends Component {
                         </div>
                         <div className="col-lg-6">
                           <div className="sn-field">
-                            <input
-                              type="text"
-                              name="skills"
-                              id="skills"
-                              placeholder="Skills (comma separated)"
-                            />
+                            <input type="text" name="skills" id="skills" placeholder="Skills (comma separated)" />
                             <i className="la la-cogs"></i>
                           </div>
                         </div>
                         <div className="col-lg-12">
                           <div className="sn-field">
-                            <input
-                              type="text"
-                              name="address"
-                              id="address"
-                              placeholder="Address"
-                            />
+                            <input type="text" name="address" id="address" placeholder="Address" />
                             <i className="la la-globe"></i>
                           </div>
                         </div>
                         <div className="col-lg-6">
                           <div className="sn-field">
-                            <input
-                              type="password"
-                              name="password"
-                              id="signin-password"
-                              placeholder="Password"
-                            />
+                            <input type="password" name="password" id="signin-password" placeholder="Password" />
                             <i className="la la-lock"></i>
                           </div>
                         </div>
                         <div className="col-lg-6">
                           <div className="sn-field">
-                            <input
-                              type="password"
-                              name="repeat-password"
-                              id="repeat-password"
-                              placeholder="Repeat Password"
-                            />
+                            <input type="password" name="repeat-password" id="repeat-password" placeholder="Repeat Password" />
                             <i className="la la-lock"></i>
                           </div>
                         </div>
@@ -242,19 +240,12 @@ class Login extends Component {
                               <label htmlFor="c2">
                                 <span></span>
                               </label>
-                              <small>
-                                Yes, I understand and agree to the LEC Terms
-                                &amp; Conditions.
-                              </small>
+                              <small>Yes, I understand and agree to the LEC Terms &amp; Conditions.</small>
                             </div>
                           </div>
                         </div>
                         <div className="col-lg-6">
-                          <button
-                            type="button"
-                            value="submit"
-                            onClick={this.handleSignUpClick}
-                          >
+                          <button type="button" value="submit" onClick={this.handleSignUpClick}>
                             Get Started
                           </button>
                         </div>
