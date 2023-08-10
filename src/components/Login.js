@@ -30,7 +30,7 @@ class Login extends Component {
     // clear error message if any
     document.querySelector("#err").innerHTML = "";
 
-    // call Backend API user create API
+    // call Backend API to create user
     fetch("http://localhost:5001/api/v1/user", {
       method: "POST",
       headers: {
