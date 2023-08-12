@@ -71,7 +71,7 @@ class PostTopBar extends Component {
       <>
         <div className="post-topbar">
           <div className="user-picy">
-            <img src={"./images/" + this.props.user.username + ".jpeg"} alt="" />
+            <img src={"./images/" + this.props.user.username + ".png"} alt="" />
           </div>
           <div className="post-st">
             <ul>
