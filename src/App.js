@@ -1,6 +1,6 @@
 import { Component } from "react";
 import "./App.css";
-import Home from "./components/Home";
+import Home from "./components/Middle/Home";
 import Login from "./components/Login";
 
 class App extends Component {

@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { loginAPI, userAPI } from "../../config";
 
 class Login extends Component {
   constructor() {
@@ -31,7 +32,7 @@ class Login extends Component {
     document.querySelector("#err").innerHTML = "";
 
     // call Backend API to create user
-    fetch("http://localhost:5001/api/v1/user", {
+    fetch(userAPI, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +82,7 @@ class Login extends Component {
     document.querySelector("#err").innerHTML = "";
 
     // call Backend API user create API
-    fetch("http://localhost:5001/api/v1/login", {
+    fetch(loginAPI, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

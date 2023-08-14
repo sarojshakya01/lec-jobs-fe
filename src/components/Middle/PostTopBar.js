@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { postAPI } from "../../config";
 
 class PostTopBar extends Component {
   constructor() {
@@ -39,7 +40,7 @@ class PostTopBar extends Component {
       return;
     }
     // call Backend API to create post record
-    fetch("http://localhost:5001/api/v1/post", {
+    fetch(postAPI, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

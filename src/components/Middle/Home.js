@@ -1,28 +1,52 @@
 import { Component } from "react";
-import Header from "./Header";
-import UserData from "./UserData";
+import Header from "../Header";
+import UserData from "../LeftSide/UserData";
 import PostTopBar from "./PostTopBar";
 import PostSection from "./PostSection";
-import TagsSection from "./TagsSection";
+import TagsSection from "../RightSide/TagsSection";
+import { postsAPI } from "../../config";
 
 class Home extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     user: {},
-  //   };
-  // }
-  // componentDidMount() {
-  //   fetch("http://localhost:5001/api/v1/user")
-  //     .then((resp) => resp.json())
-  //     .then((data) => {
-  //       this.setState({ user: data });
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: [],
+    };
+    this.allPosts = [];
+    this.handleSearch = this.handleSearch.bind(this);
+  }
 
+  componentDidMount() {
+    fetch(postsAPI)
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (!data.error) {
+          this.setState({ posts: data });
+          this.allPosts = data;
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+  handleSearch() {
+    const formElem = document.getElementById("search-form");
+    const searchKey = formElem.querySelector("#search-filter").value;
+
+    if (searchKey.length > 3) {
+      const currentPosts = [...this.state.posts];
+      const filteredPosts = currentPosts.filter((post) => {
+        if (post.title.toLowerCase().includes(searchKey.toLowerCase()) || post.description.toLowerCase().includes(searchKey.toLowerCase())) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      this.setState({ posts: filteredPosts });
+    } else {
+      this.setState({ posts: this.allPosts });
+    }
+  }
   render() {
     const user = this.props.user;
     // const user = { ...this.props.user };
@@ -32,7 +56,7 @@ class Home extends Component {
     }
     return (
       <div className="wrapper">
-        <Header user={user} />
+        <Header user={user} handleSearch={this.handleSearch} />
         <main>
           <div className="main-section">
             <div className="container">
@@ -42,12 +66,15 @@ class Home extends Component {
                   <div className="col-lg-6 col-md-8 no-pd">
                     <div className="main-ws-sec">
                       <PostTopBar user={user} />
-                      <PostSection user={user} />
+                      <PostSection posts={this.state.posts} user={user} />
                     </div>
                   </div>
                   <div className="col-lg-3 pd-right-none no-pd">
                     <div className="right-sidebar">
-                      <div className="widget widget-about" style={{ display: "none" }}>
+                      <div
+                        className="widget widget-about"
+                        style={{ display: "none" }}
+                      >
                         <img src="./images/lec.png" alt="" />
                         <h3>Track Time on LEC</h3>
                         <span>Pay only for the Hours worked</span>
@@ -62,7 +89,10 @@ class Home extends Component {
                           </a>
                         </div>
                       </div>
-                      <div className="widget widget-jobs" style={{ display: "none" }}>
+                      <div
+                        className="widget widget-jobs"
+                        style={{ display: "none" }}
+                      >
                         <div className="sd-title">
                           <h3>Top Jobs</h3>
                           <i className="la la-ellipsis-v"></i>
@@ -71,7 +101,10 @@ class Home extends Component {
                           <div className="job-info">
                             <div className="job-details">
                               <h3>Senior Product Designer</h3>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
                             </div>
                             <div className="hr-rate">
                               <span>$25/hr</span>
@@ -80,7 +113,10 @@ class Home extends Component {
                           <div className="job-info">
                             <div className="job-details">
                               <h3>Senior UI / UX Designer</h3>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
                             </div>
                             <div className="hr-rate">
                               <span>$25/hr</span>
@@ -89,7 +125,10 @@ class Home extends Component {
                           <div className="job-info">
                             <div className="job-details">
                               <h3>Junior Seo Designer</h3>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
                             </div>
                             <div className="hr-rate">
                               <span>$25/hr</span>
@@ -98,7 +137,10 @@ class Home extends Component {
                           <div className="job-info">
                             <div className="job-details">
                               <h3>Senior PHP Designer</h3>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
                             </div>
                             <div className="hr-rate">
                               <span>$25/hr</span>
@@ -107,7 +149,10 @@ class Home extends Component {
                           <div className="job-info">
                             <div className="job-details">
                               <h3>Senior Developer Designer</h3>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
                             </div>
                             <div className="hr-rate">
                               <span>$25/hr</span>
@@ -116,7 +161,10 @@ class Home extends Component {
                         </div>
                       </div>
                       <TagsSection />
-                      <div className="widget widget-jobs" style={{ display: "none" }}>
+                      <div
+                        className="widget widget-jobs"
+                        style={{ display: "none" }}
+                      >
                         <div className="sd-title">
                           <h3>Most Viewed This Week</h3>
                           <i className="la la-ellipsis-v"></i>
@@ -125,7 +173,10 @@ class Home extends Component {
                           <div className="job-info">
                             <div className="job-details">
                               <h3>Senior Product Designer</h3>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
                             </div>
                             <div className="hr-rate">
                               <span>$25/hr</span>
@@ -134,7 +185,10 @@ class Home extends Component {
                           <div className="job-info">
                             <div className="job-details">
                               <h3>Senior UI / UX Designer</h3>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
                             </div>
                             <div className="hr-rate">
                               <span>$25/hr</span>
@@ -143,7 +197,10 @@ class Home extends Component {
                           <div className="job-info">
                             <div className="job-details">
                               <h3>Junior Seo Designer</h3>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit..
+                              </p>
                             </div>
                             <div className="hr-rate">
                               <span>$25/hr</span>
@@ -151,7 +208,10 @@ class Home extends Component {
                           </div>
                         </div>
                       </div>
-                      <div className="widget suggestions full-width" style={{ display: "none" }}>
+                      <div
+                        className="widget suggestions full-width"
+                        style={{ display: "none" }}
+                      >
                         <div className="sd-title">
                           <h3>Most Viewed People</h3>
                           <i className="la la-ellipsis-v"></i>
@@ -231,7 +291,10 @@ class Home extends Component {
             </div>
           </div>
         </main>
-        <div className="chatbox-list" style={{ right: "270px", display: "none" }}>
+        <div
+          className="chatbox-list"
+          style={{ right: "270px", display: "none" }}
+        >
           <div className="chatbox">
             <div className="chat-mg">
               <a href="./index.html#" title="">
@@ -259,11 +322,28 @@ class Home extends Component {
                   </a>
                 </div>
               </div>
-              <div className="chat-hist mCustomScrollbar _mCS_1" data-mcs-theme="dark">
-                <div id="mCSB_1" className="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style={{ maxHeight: "none" }} tabIndex="0">
-                  <div id="mCSB_1_container" className="mCSB_container" style={{ position: "relative", top: 0, left: 0 }} dir="ltr">
+              <div
+                className="chat-hist mCustomScrollbar _mCS_1"
+                data-mcs-theme="dark"
+              >
+                <div
+                  id="mCSB_1"
+                  className="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside"
+                  style={{ maxHeight: "none" }}
+                  tabIndex="0"
+                >
+                  <div
+                    id="mCSB_1_container"
+                    className="mCSB_container"
+                    style={{ position: "relative", top: 0, left: 0 }}
+                    dir="ltr"
+                  >
                     <div className="chat-msg">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec rutrum congue leo eget malesuada. Vivamus suscipit
+                        tortor eget felis porttitor.
+                      </p>
                       <span>Sat, Aug 23, 1:10 PM</span>
                     </div>
                     <div className="date-nd">
@@ -274,11 +354,19 @@ class Home extends Component {
                       <span>5 minutes ago</span>
                     </div>
                     <div className="chat-msg">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec rutrum congue leo eget malesuada. Vivamus suscipit
+                        tortor eget felis porttitor.
+                      </p>
                       <span>Sat, Aug 23, 1:10 PM</span>
                     </div>
                   </div>
-                  <div id="mCSB_1_scrollbar_vertical" className="mCSB_scrollTools mCSB_1_scrollbar mCS-dark mCSB_scrollTools_vertical" style={{ display: "block" }}>
+                  <div
+                    id="mCSB_1_scrollbar_vertical"
+                    className="mCSB_scrollTools mCSB_1_scrollbar mCS-dark mCSB_scrollTools_vertical"
+                    style={{ display: "block" }}
+                  >
                     <div className="mCSB_draggerContainer">
                       <div
                         id="mCSB_1_dragger_vertical"
@@ -292,7 +380,10 @@ class Home extends Component {
                           top: "0px",
                         }}
                       >
-                        <div className="mCSB_dragger_bar" style={{ lineHeight: "30px" }}></div>
+                        <div
+                          className="mCSB_dragger_bar"
+                          style={{ lineHeight: "30px" }}
+                        ></div>
                       </div>
                       <div className="mCSB_draggerRail"></div>
                     </div>
@@ -352,11 +443,28 @@ class Home extends Component {
                   </a>
                 </div>
               </div>
-              <div className="chat-hist mCustomScrollbar _mCS_2" data-mcs-theme="dark">
-                <div id="mCSB_2" className="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style={{ maxHeight: "none" }} tabIndex="0">
-                  <div id="mCSB_2_container" className="mCSB_container" style={{ position: "relative", top: 0, left: 0 }} dir="ltr">
+              <div
+                className="chat-hist mCustomScrollbar _mCS_2"
+                data-mcs-theme="dark"
+              >
+                <div
+                  id="mCSB_2"
+                  className="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside"
+                  style={{ maxHeight: "none" }}
+                  tabIndex="0"
+                >
+                  <div
+                    id="mCSB_2_container"
+                    className="mCSB_container"
+                    style={{ position: "relative", top: 0, left: 0 }}
+                    dir="ltr"
+                  >
                     <div className="chat-msg">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec rutrum congue leo eget malesuada. Vivamus suscipit
+                        tortor eget felis porttitor.
+                      </p>
                       <span>Sat, Aug 23, 1:10 PM</span>
                     </div>
                     <div className="date-nd">
@@ -367,11 +475,19 @@ class Home extends Component {
                       <span>5 minutes ago</span>
                     </div>
                     <div className="chat-msg">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec rutrum congue leo eget malesuada. Vivamus suscipit
+                        tortor eget felis porttitor.
+                      </p>
                       <span>Sat, Aug 23, 1:10 PM</span>
                     </div>
                   </div>
-                  <div id="mCSB_2_scrollbar_vertical" className="mCSB_scrollTools mCSB_2_scrollbar mCS-dark mCSB_scrollTools_vertical" style={{ display: "block" }}>
+                  <div
+                    id="mCSB_2_scrollbar_vertical"
+                    className="mCSB_scrollTools mCSB_2_scrollbar mCS-dark mCSB_scrollTools_vertical"
+                    style={{ display: "block" }}
+                  >
                     <div className="mCSB_draggerContainer">
                       <div
                         id="mCSB_2_dragger_vertical"
@@ -385,7 +501,10 @@ class Home extends Component {
                           top: "0px",
                         }}
                       >
-                        <div className="mCSB_dragger_bar" style={{ lineHeight: "30px" }}></div>
+                        <div
+                          className="mCSB_dragger_bar"
+                          style={{ lineHeight: "30px" }}
+                        ></div>
                       </div>
                       <div className="mCSB_draggerRail"></div>
                     </div>
