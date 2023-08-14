@@ -1,6 +1,13 @@
 import { Component } from "react";
 
 class Header extends Component {
+  handleLogout(event) {
+    // remove session
+    event.preventDefault();
+    window.sessionStorage.clear();
+    window.location.reload();
+  }
+
   render() {
     return (
       <header>
@@ -191,11 +198,11 @@ class Header extends Component {
             <div className="user-account">
               <div className="user-info">
                 <img
-                  src={"./images/" + this.props.user.username + ".jpeg"}
+                  src={"./images/" + this.props.user.username + ".png"}
                   alt=""
                 />
                 <a href="./index.html#" title="">
-                  {this.props.user.fullname}
+                  {this.props.user.fullname.substring(0, 4) + ".."}
                 </a>
                 <i className="la la-sort-down"></i>
               </div>
@@ -252,7 +259,7 @@ class Header extends Component {
                   </li>
                 </ul>
                 <h3 className="tc">
-                  <a href="./sign-in.html" title="">
+                  <a href="#" title="" onClick={this.handleLogout}>
                     Logout
                   </a>
                 </h3>

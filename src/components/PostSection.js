@@ -25,7 +25,7 @@ class PostSection extends Component {
     return (
       <div className="posts-section">
         {this.state.posts.map((post, idx) => (
-          <Post post={post} key={idx} />
+          <Post post={post} user={this.props.user} key={idx} />
         ))}
       </div>
     );

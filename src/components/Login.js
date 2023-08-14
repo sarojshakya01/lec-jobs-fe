@@ -52,7 +52,11 @@ class Login extends Component {
         if (data.error) {
           document.querySelector("#err").innerHTML = data.error;
         } else {
-          document.querySelector("#err").innerHTML = "Signup Successfull";
+          document.querySelector("#err").innerHTML = "Signup Successfully";
+          // reload page after 1 second
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
         }
       })
       .catch((err) => {
