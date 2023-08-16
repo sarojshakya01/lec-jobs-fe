@@ -8,6 +8,13 @@ class Header extends Component {
     window.location.reload();
   }
 
+  handleToggleUserInfo(event) {
+    // used jquery for now
+    window.$(".user-account-settingss").slideToggle("fast");
+    window.$("#message").not(window.$(this).next("#message")).slideUp();
+    window.$("#notification").not(window.$(this).next("#notification")).slideUp();
+  }
+  
   render() {
     return (
       <header>
@@ -196,7 +203,7 @@ class Header extends Component {
               </a>
             </div>
             <div className="user-account">
-              <div className="user-info">
+              <div className="user-info" onClick={this.handleToggleUserInfo}>
                 <img
                   src={"./images/" + this.props.user.username + ".png"}
                   alt=""
