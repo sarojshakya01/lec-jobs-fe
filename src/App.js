@@ -1,7 +1,7 @@
 import { Component } from "react";
 import "./App.css";
-import Home from "./components/Home";
-import Login from "./components/Login";
+import Home from "./components/Pages/Home";
+import Login from "./components/Pages/Login";
 
 class App extends Component {
   constructor() {

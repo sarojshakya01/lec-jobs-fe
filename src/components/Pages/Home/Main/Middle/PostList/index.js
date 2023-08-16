@@ -1,7 +1,7 @@
 import { Component } from "react";
 import Post from "./Post";
 
-class PostSection extends Component {
+class PostList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,4 +32,4 @@ class PostSection extends Component {
   }
 }
 
-export default PostSection;
+export default PostList;
