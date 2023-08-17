@@ -1,41 +1,34 @@
-import { Component } from "react";
+import { useState } from "react";
 import "./App.css";
 import Home from "./components/Pages/Home";
 import Login from "./components/Pages/Login";
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      userLoggedIn: false,
-      user: {},
-    };
-    this.loginUser = this.loginUser.bind(this);
-  }
+const App = () => {
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [user, setUser] = useState({});
 
-  loginUser(user) {
-    this.setState({ userLoggedIn: true, user: user });
+  const loginUser = (user) => {
+    setUserLoggedIn(true);
+    setUser(user);
     window.sessionStorage.setItem("loggedInUser", JSON.stringify(user));
     window.sessionStorage.setItem("isLoggedIn", "true");
-  }
+  };
 
-  render() {
-    let user = this.state.user;
-    let userLoggedIn = this.state.userLoggedIn;
-    if (!Object.keys(user).length || !userLoggedIn) {
-      user = window.sessionStorage.getItem("loggedInUser");
-      userLoggedIn = window.sessionStorage.getItem("isLoggedIn") === "true";
-      if (userLoggedIn) {
-        user = JSON.parse(user);
-      }
-    }
-
-    if (userLoggedIn) {
-      return <Home user={user} />;
-    } else {
-      return <Login loginUser={this.loginUser} />;
+  let userTemp = user;
+  let userLoggedInTemp = userLoggedIn;
+  if (!Object.keys(user).length || !userLoggedIn) {
+    userTemp = window.sessionStorage.getItem("loggedInUser");
+    userLoggedInTemp = window.sessionStorage.getItem("isLoggedIn") === "true";
+    if (userLoggedInTemp) {
+      userTemp = JSON.parse(user);
     }
   }
-}
+
+  if (userLoggedInTemp) {
+    return <Home user={userTemp} />;
+  } else {
+    return <Login loginUser={loginUser} />;
+  }
+};
 
 export default App;
