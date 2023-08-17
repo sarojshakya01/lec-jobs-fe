@@ -20,7 +20,7 @@ const App = () => {
     userTemp = window.sessionStorage.getItem("loggedInUser");
     userLoggedInTemp = window.sessionStorage.getItem("isLoggedIn") === "true";
     if (userLoggedInTemp) {
-      userTemp = JSON.parse(user);
+      userTemp = JSON.parse(userTemp);
     }
   }
 
