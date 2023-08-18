@@ -18,9 +18,20 @@ const PostList = (props) => {
       });
   }, []);
 
+  let filteredPosts = [...posts];
+  if (props.searchKey) {
+    filteredPosts = posts.filter((post) => {
+      if (post.title.toLowerCase().includes(props.searchKey.toLowerCase()) || post.description.toLowerCase().includes(props.searchKey.toLowerCase())) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
+
   return (
     <div className="posts-section">
-      {posts.map((post, idx) => (
+      {filteredPosts.map((post, idx) => (
         <Post post={post} user={props.user} key={idx} />
       ))}
     </div>

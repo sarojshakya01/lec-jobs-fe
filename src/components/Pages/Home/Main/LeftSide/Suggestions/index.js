@@ -17,7 +17,8 @@ const Suggestions = (props) => {
           setSuggestions(data);
         }
       });
-  }, [props]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="suggestions full-width">

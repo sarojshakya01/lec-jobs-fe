@@ -7,7 +7,7 @@ const Middle = (props) => {
     <div className="col-lg-6 col-md-8 no-pd">
       <div className="main-ws-sec">
         <NewPost user={user} />
-        <PostList user={user} />
+        <PostList user={user} searchKey={props.searchKey} />
       </div>
     </div>
   );
