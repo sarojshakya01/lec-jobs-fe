@@ -1,3 +1,5 @@
+import { LOGIN_API } from "../../../config";
+
 const SignIn = (props) => {
   const handleSignInClick = (evnt) => {
     const formElem = document.getElementById("login-form");
@@ -14,7 +16,7 @@ const SignIn = (props) => {
     document.querySelector("#err").innerHTML = "";
 
     // call Backend API user create API
-    fetch("http://localhost:5001/api/v1/login", {
+    fetch(LOGIN_API, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,23 +47,13 @@ const SignIn = (props) => {
         <div className="row">
           <div className="col-lg-6">
             <div className="sn-field">
-              <input
-                type="text"
-                name="username"
-                id="username"
-                placeholder="Username"
-              />
+              <input type="text" name="username" id="username" placeholder="Username" />
               <i className="la la-user"></i>
             </div>
           </div>
           <div className="col-lg-6">
             <div className="sn-field">
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Password"
-              />
+              <input type="password" name="password" id="password" placeholder="Password" />
               <i className="la la-lock"></i>
             </div>
           </div>

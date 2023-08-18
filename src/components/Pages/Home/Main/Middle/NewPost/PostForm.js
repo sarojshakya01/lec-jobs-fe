@@ -1,22 +1,17 @@
-import { Component } from "react";
+import { POST_API } from "../../../../../../config";
 
-class PostForm extends Component {
-  constructor() {
-    super();
-    this.handleSumitPost = this.handleSumitPost.bind(this);
-  }
-
-  handleHidePostForm() {
+const PostForm = (props) => {
+  const handleHidePostForm = () => {
     document.querySelector(".post-popup.job_post").classList.remove("active");
     document.querySelector(".wrapper").classList.remove("overlay");
     return false;
-  }
+  };
 
-  handleSumitPost() {
+  const handleSumitPost = () => {
     // login user info needed to link with post (to know who create post)
-    const user_id = this.props.user.id;
-    const post_by_username = this.props.user.username;
-    const post_by_fullname = this.props.user.fullname;
+    const user_id = props.user.id;
+    const post_by_username = props.user.username;
+    const post_by_fullname = props.user.fullname;
 
     // select post form
     const formElem = document.getElementById("post-form");
@@ -34,7 +29,7 @@ class PostForm extends Component {
       return;
     }
     // call Backend API to create post record
-    fetch("http://localhost:5001/api/v1/post", {
+    fetch(POST_API, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,67 +55,65 @@ class PostForm extends Component {
       .catch((err) => {
         console.error(err);
       });
-  }
+  };
 
-  render() {
-    return (
-      <div className="post-popup job_post">
-        <div className="post-project">
-          <h3>Post a job</h3>
-          <div className="post-project-fields">
-            <form id="post-form">
-              <div className="row">
-                <div className="col-lg-12">
-                  <input type="text" name="title" id="title" placeholder="Title" />
-                </div>
-                <div className="col-lg-12">
-                  <input type="text" name="skills" id="skills" placeholder="Skills" />
-                </div>
-                <div className="col-lg-6">
-                  <div className="price-br">
-                    <input type="number" name="pay_rate_per_hr_dollar" id="pay_rate_per_hr_dollar" placeholder="Pay Rate" />
-                    <i className="la la-dollar"></i>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <div className="inp-field">
-                    <select id="job_type">
-                      <option value="">Select Job Type</option>
-                      <option value="Full Time">Full Time</option>
-                      <option value="Part Time">Part time</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="col-lg-12">
-                  <input type="text" name="location" id="location" placeholder="Location" />
-                </div>
-                <div className="col-lg-12">
-                  <textarea name="description" id="description" placeholder="Description"></textarea>
-                </div>
-                <div className="col-lg-12">
-                  <ul>
-                    <li>
-                      <button className="active" type="button" value="post" onClick={this.handleSumitPost}>
-                        Post
-                      </button>
-                    </li>
-                    <li>
-                      <a href="/#" title="" onClick={this.handleHidePostForm}>
-                        Cancel
-                      </a>
-                    </li>
-                  </ul>
+  return (
+    <div className="post-popup job_post">
+      <div className="post-project">
+        <h3>Post a job</h3>
+        <div className="post-project-fields">
+          <form id="post-form">
+            <div className="row">
+              <div className="col-lg-12">
+                <input type="text" name="title" id="title" placeholder="Title" />
+              </div>
+              <div className="col-lg-12">
+                <input type="text" name="skills" id="skills" placeholder="Skills" />
+              </div>
+              <div className="col-lg-6">
+                <div className="price-br">
+                  <input type="number" name="pay_rate_per_hr_dollar" id="pay_rate_per_hr_dollar" placeholder="Pay Rate" />
+                  <i className="la la-dollar"></i>
                 </div>
               </div>
-            </form>
-          </div>
-          <a href="/#" title="" onClick={this.handleHidePostForm}>
-            <i className="la la-times-circle-o"></i>
-          </a>
+              <div className="col-lg-6">
+                <div className="inp-field">
+                  <select id="job_type">
+                    <option value="">Select Job Type</option>
+                    <option value="Full Time">Full Time</option>
+                    <option value="Part Time">Part time</option>
+                  </select>
+                </div>
+              </div>
+              <div className="col-lg-12">
+                <input type="text" name="location" id="location" placeholder="Location" />
+              </div>
+              <div className="col-lg-12">
+                <textarea name="description" id="description" placeholder="Description"></textarea>
+              </div>
+              <div className="col-lg-12">
+                <ul>
+                  <li>
+                    <button className="active" type="button" value="post" onClick={handleSumitPost}>
+                      Post
+                    </button>
+                  </li>
+                  <li>
+                    <a href="/#" title="" onClick={handleHidePostForm}>
+                      Cancel
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </form>
         </div>
+        <a href="/#" title="" onClick={handleHidePostForm}>
+          <i className="la la-times-circle-o"></i>
+        </a>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default PostForm;

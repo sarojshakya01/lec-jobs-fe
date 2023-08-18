@@ -1,3 +1,5 @@
+import { USER_API } from "../../../config";
+
 const SignUp = () => {
   const handleSignUpClick = (evnt) => {
     // get SignForm HTML Element from form ID
@@ -24,7 +26,7 @@ const SignUp = () => {
     document.querySelector("#err").innerHTML = "";
 
     // call Backend API to create user
-    fetch("http://localhost:5001/api/v1/user", {
+    fetch(USER_API, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,12 +68,7 @@ const SignUp = () => {
         <div className="row">
           <div className="col-lg-6">
             <div className="sn-field">
-              <input
-                type="text"
-                name="username"
-                id="signin-username"
-                placeholder="Username"
-              />
+              <input type="text" name="username" id="signin-username" placeholder="Username" />
               <i className="la la-user"></i>
             </div>
           </div>
@@ -83,12 +80,7 @@ const SignUp = () => {
           </div>
           <div className="col-lg-6">
             <div className="sn-field">
-              <input
-                type="text"
-                name="fullname"
-                id="fullname"
-                placeholder="Full Name"
-              />
+              <input type="text" name="fullname" id="fullname" placeholder="Full Name" />
               <i className="la la-user"></i>
             </div>
           </div>
@@ -113,45 +105,25 @@ const SignUp = () => {
           </div>
           <div className="col-lg-6">
             <div className="sn-field">
-              <input
-                type="text"
-                name="skills"
-                id="skills"
-                placeholder="Skills (comma separated)"
-              />
+              <input type="text" name="skills" id="skills" placeholder="Skills (comma separated)" />
               <i className="la la-cogs"></i>
             </div>
           </div>
           <div className="col-lg-12">
             <div className="sn-field">
-              <input
-                type="text"
-                name="address"
-                id="address"
-                placeholder="Address"
-              />
+              <input type="text" name="address" id="address" placeholder="Address" />
               <i className="la la-globe"></i>
             </div>
           </div>
           <div className="col-lg-6">
             <div className="sn-field">
-              <input
-                type="password"
-                name="password"
-                id="signin-password"
-                placeholder="Password"
-              />
+              <input type="password" name="password" id="signin-password" placeholder="Password" />
               <i className="la la-lock"></i>
             </div>
           </div>
           <div className="col-lg-6">
             <div className="sn-field">
-              <input
-                type="password"
-                name="repeat-password"
-                id="repeat-password"
-                placeholder="Repeat Password"
-              />
+              <input type="password" name="repeat-password" id="repeat-password" placeholder="Repeat Password" />
               <i className="la la-lock"></i>
             </div>
           </div>
@@ -162,18 +134,12 @@ const SignUp = () => {
                 <label htmlFor="c2">
                   <span></span>
                 </label>
-                <small>
-                  Yes, I understand and agree to the LEC Terms &amp; Conditions.
-                </small>
+                <small>Yes, I understand and agree to the LEC Terms &amp; Conditions.</small>
               </div>
             </div>
           </div>
           <div className="col-lg-6">
-            <button
-              type="button"
-              value="submit"
-              onClick={handleSignUpClick}
-            >
+            <button type="button" value="submit" onClick={handleSignUpClick}>
               Get Started
             </button>
           </div>
