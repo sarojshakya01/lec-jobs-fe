@@ -3,7 +3,7 @@ const ChatBox = () => {
     <div className="chatbox-list" style={{ right: "270px", display: "none" }}>
       <div className="chatbox">
         <div className="chat-mg">
-          <a href="./index.html#" title="">
+          <a href="/#" title="">
             <img src="./images/usr-img1.png" alt="" />
           </a>
           <span>2</span>
@@ -17,39 +17,22 @@ const ChatBox = () => {
               </h3>
             </div>
             <div className="st-icons">
-              <a href="./index.html#" title="">
+              <a href="/#" title="">
                 <i className="la la-cog"></i>
               </a>
-              <a href="./index.html#" title="" className="close-chat">
+              <a href="/#" title="" className="close-chat">
                 <i className="la la-minus-square"></i>
               </a>
-              <a href="./index.html#" title="" className="close-chat">
+              <a href="/#" title="" className="close-chat">
                 <i className="la la-close"></i>
               </a>
             </div>
           </div>
-          <div
-            className="chat-hist mCustomScrollbar _mCS_1"
-            data-mcs-theme="dark"
-          >
-            <div
-              id="mCSB_1"
-              className="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside"
-              style={{ maxHeight: "none" }}
-              tabIndex="0"
-            >
-              <div
-                id="mCSB_1_container"
-                className="mCSB_container"
-                style={{ position: "relative", top: 0, left: 0 }}
-                dir="ltr"
-              >
+          <div className="chat-hist mCustomScrollbar _mCS_1" data-mcs-theme="dark">
+            <div id="mCSB_1" className="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style={{ maxHeight: "none" }} tabIndex="0">
+              <div id="mCSB_1_container" className="mCSB_container" style={{ position: "relative", top: 0, left: 0 }} dir="ltr">
                 <div className="chat-msg">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec rutrum congue leo eget malesuada. Vivamus suscipit
-                    tortor eget felis porttitor.
-                  </p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
                   <span>Sat, Aug 23, 1:10 PM</span>
                 </div>
                 <div className="date-nd">
@@ -60,19 +43,11 @@ const ChatBox = () => {
                   <span>5 minutes ago</span>
                 </div>
                 <div className="chat-msg">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec rutrum congue leo eget malesuada. Vivamus suscipit
-                    tortor eget felis porttitor.
-                  </p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
                   <span>Sat, Aug 23, 1:10 PM</span>
                 </div>
               </div>
-              <div
-                id="mCSB_1_scrollbar_vertical"
-                className="mCSB_scrollTools mCSB_1_scrollbar mCS-dark mCSB_scrollTools_vertical"
-                style={{ display: "block" }}
-              >
+              <div id="mCSB_1_scrollbar_vertical" className="mCSB_scrollTools mCSB_1_scrollbar mCS-dark mCSB_scrollTools_vertical" style={{ display: "block" }}>
                 <div className="mCSB_draggerContainer">
                   <div
                     id="mCSB_1_dragger_vertical"
@@ -86,10 +61,7 @@ const ChatBox = () => {
                       top: "0px",
                     }}
                   >
-                    <div
-                      className="mCSB_dragger_bar"
-                      style={{ lineHeight: "30px" }}
-                    ></div>
+                    <div className="mCSB_dragger_bar" style={{ lineHeight: "30px" }}></div>
                   </div>
                   <div className="mCSB_draggerRail"></div>
                 </div>
@@ -105,17 +77,17 @@ const ChatBox = () => {
             </form>
             <ul className="ft-options">
               <li>
-                <a href="./index.html#" title="">
+                <a href="/#" title="">
                   <i className="la la-smile-o"></i>
                 </a>
               </li>
               <li>
-                <a href="./index.html#" title="">
+                <a href="/#" title="">
                   <i className="la la-camera"></i>
                 </a>
               </li>
               <li>
-                <a href="./index.html#" title="">
+                <a href="/#" title="">
                   <i className="fa fa-paperclip"></i>
                 </a>
               </li>
@@ -125,7 +97,7 @@ const ChatBox = () => {
       </div>
       <div className="chatbox">
         <div className="chat-mg">
-          <a href="./index.html#" title="">
+          <a href="/#" title="">
             <img src="./images/usr-img2.png" alt="" />
           </a>
         </div>
@@ -138,39 +110,22 @@ const ChatBox = () => {
               </h3>
             </div>
             <div className="st-icons">
-              <a href="./index.html#" title="">
+              <a href="/#" title="">
                 <i className="la la-cog"></i>
               </a>
-              <a href="./index.html#" title="" className="close-chat">
+              <a href="/#" title="" className="close-chat">
                 <i className="la la-minus-square"></i>
               </a>
-              <a href="./index.html#" title="" className="close-chat">
+              <a href="/#" title="" className="close-chat">
                 <i className="la la-close"></i>
               </a>
             </div>
           </div>
-          <div
-            className="chat-hist mCustomScrollbar _mCS_2"
-            data-mcs-theme="dark"
-          >
-            <div
-              id="mCSB_2"
-              className="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside"
-              style={{ maxHeight: "none" }}
-              tabIndex="0"
-            >
-              <div
-                id="mCSB_2_container"
-                className="mCSB_container"
-                style={{ position: "relative", top: 0, left: 0 }}
-                dir="ltr"
-              >
+          <div className="chat-hist mCustomScrollbar _mCS_2" data-mcs-theme="dark">
+            <div id="mCSB_2" className="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style={{ maxHeight: "none" }} tabIndex="0">
+              <div id="mCSB_2_container" className="mCSB_container" style={{ position: "relative", top: 0, left: 0 }} dir="ltr">
                 <div className="chat-msg">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec rutrum congue leo eget malesuada. Vivamus suscipit
-                    tortor eget felis porttitor.
-                  </p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
                   <span>Sat, Aug 23, 1:10 PM</span>
                 </div>
                 <div className="date-nd">
@@ -181,19 +136,11 @@ const ChatBox = () => {
                   <span>5 minutes ago</span>
                 </div>
                 <div className="chat-msg">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec rutrum congue leo eget malesuada. Vivamus suscipit
-                    tortor eget felis porttitor.
-                  </p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
                   <span>Sat, Aug 23, 1:10 PM</span>
                 </div>
               </div>
-              <div
-                id="mCSB_2_scrollbar_vertical"
-                className="mCSB_scrollTools mCSB_2_scrollbar mCS-dark mCSB_scrollTools_vertical"
-                style={{ display: "block" }}
-              >
+              <div id="mCSB_2_scrollbar_vertical" className="mCSB_scrollTools mCSB_2_scrollbar mCS-dark mCSB_scrollTools_vertical" style={{ display: "block" }}>
                 <div className="mCSB_draggerContainer">
                   <div
                     id="mCSB_2_dragger_vertical"
@@ -207,10 +154,7 @@ const ChatBox = () => {
                       top: "0px",
                     }}
                   >
-                    <div
-                      className="mCSB_dragger_bar"
-                      style={{ lineHeight: "30px" }}
-                    ></div>
+                    <div className="mCSB_dragger_bar" style={{ lineHeight: "30px" }}></div>
                   </div>
                   <div className="mCSB_draggerRail"></div>
                 </div>
@@ -226,17 +170,17 @@ const ChatBox = () => {
             </form>
             <ul className="ft-options">
               <li>
-                <a href="./index.html#" title="">
+                <a href="/#" title="">
                   <i className="la la-smile-o"></i>
                 </a>
               </li>
               <li>
-                <a href="./index.html#" title="">
+                <a href="/#" title="">
                   <i className="la la-camera"></i>
                 </a>
               </li>
               <li>
-                <a href="./index.html#" title="">
+                <a href="/#" title="">
                   <i className="fa fa-paperclip"></i>
                 </a>
               </li>
@@ -246,7 +190,7 @@ const ChatBox = () => {
       </div>
       <div className="chatbox">
         <div className="chat-mg bx">
-          <a href="./index.html#" title="">
+          <a href="/#" title="">
             <img src="./images/chat.png" alt="" />
           </a>
           <span>2</span>
@@ -254,7 +198,7 @@ const ChatBox = () => {
         <div className="conversation-box">
           <div className="con-title">
             <h3>Messages</h3>
-            <a href="./index.html#" title="" className="close-chat">
+            <a href="/#" title="" className="close-chat">
               <i className="la la-minus-square"></i>
             </a>
           </div>

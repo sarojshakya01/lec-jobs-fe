@@ -25,9 +25,7 @@ class PostForm extends Component {
     const title = formElem.querySelector("#title").value;
     const skills = formElem.querySelector("#skills").value.split(",");
     const job_type = formElem.querySelector("#job_type").value;
-    const pay_rate_per_hr_dollar = parseFloat(
-      formElem.querySelector("#pay_rate_per_hr_dollar").value
-    );
+    const pay_rate_per_hr_dollar = parseFloat(formElem.querySelector("#pay_rate_per_hr_dollar").value);
     const location = formElem.querySelector("#location").value;
     const description = formElem.querySelector("#description").value;
 
@@ -63,7 +61,7 @@ class PostForm extends Component {
         console.error(err);
       });
   }
-  
+
   render() {
     return (
       <div className="post-popup job_post">
@@ -73,29 +71,14 @@ class PostForm extends Component {
             <form id="post-form">
               <div className="row">
                 <div className="col-lg-12">
-                  <input
-                    type="text"
-                    name="title"
-                    id="title"
-                    placeholder="Title"
-                  />
+                  <input type="text" name="title" id="title" placeholder="Title" />
                 </div>
                 <div className="col-lg-12">
-                  <input
-                    type="text"
-                    name="skills"
-                    id="skills"
-                    placeholder="Skills"
-                  />
+                  <input type="text" name="skills" id="skills" placeholder="Skills" />
                 </div>
                 <div className="col-lg-6">
                   <div className="price-br">
-                    <input
-                      type="number"
-                      name="pay_rate_per_hr_dollar"
-                      id="pay_rate_per_hr_dollar"
-                      placeholder="Pay Rate"
-                    />
+                    <input type="number" name="pay_rate_per_hr_dollar" id="pay_rate_per_hr_dollar" placeholder="Pay Rate" />
                     <i className="la la-dollar"></i>
                   </div>
                 </div>
@@ -109,34 +92,20 @@ class PostForm extends Component {
                   </div>
                 </div>
                 <div className="col-lg-12">
-                  <input
-                    type="text"
-                    name="location"
-                    id="location"
-                    placeholder="Location"
-                  />
+                  <input type="text" name="location" id="location" placeholder="Location" />
                 </div>
                 <div className="col-lg-12">
-                  <textarea
-                    name="description"
-                    id="description"
-                    placeholder="Description"
-                  ></textarea>
+                  <textarea name="description" id="description" placeholder="Description"></textarea>
                 </div>
                 <div className="col-lg-12">
                   <ul>
                     <li>
-                      <button
-                        className="active"
-                        type="button"
-                        value="post"
-                        onClick={this.handleSumitPost}
-                      >
+                      <button className="active" type="button" value="post" onClick={this.handleSumitPost}>
                         Post
                       </button>
                     </li>
                     <li>
-                      <a href="#" title="" onClick={this.handleHidePostForm}>
+                      <a href="/#" title="" onClick={this.handleHidePostForm}>
                         Cancel
                       </a>
                     </li>
@@ -145,7 +114,7 @@ class PostForm extends Component {
               </div>
             </form>
           </div>
-          <a href="#" title="" onClick={this.handleHidePostForm}>
+          <a href="/#" title="" onClick={this.handleHidePostForm}>
             <i className="la la-times-circle-o"></i>
           </a>
         </div>

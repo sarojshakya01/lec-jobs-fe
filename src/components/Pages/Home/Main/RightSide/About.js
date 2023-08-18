@@ -6,11 +6,11 @@ const About = () => {
       <span>Pay only for the Hours worked</span>
       <div className="sign_link">
         {/* <h3>
-        <a href="./sign-in.html" title="">
+        <a href="/#" title="">
           Sign up
         </a>
       </h3> */}
-        <a href="./index.html#" title="">
+        <a href="/#" title="">
           Learn More
         </a>
       </div>

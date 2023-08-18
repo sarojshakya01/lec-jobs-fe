@@ -16,12 +16,7 @@ class AddPostBtn extends Component {
         <div className="post-st">
           <ul>
             <li>
-              <a
-                className="post-jb active"
-                href="#"
-                title=""
-                onClick={this.handleShowPostForm}
-              >
+              <a className="post-jb active" href="/#" title="" onClick={this.handleShowPostForm}>
                 Post a Job
               </a>
             </li>

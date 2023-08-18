@@ -1,4 +1,3 @@
-
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import CompanyInfo from "./CompanyInfo";
@@ -16,12 +15,12 @@ const Login = (props) => {
               <div className="login-sec">
                 <ul className="sign-control">
                   <li data-tab="tab-1" className="current">
-                    <a href="./#" title="">
+                    <a href="/#" title="">
                       Sign in
                     </a>
                   </li>
                   <li data-tab="tab-2">
-                    <a href="./#" title="">
+                    <a href="/#" title="">
                       Sign up
                     </a>
                   </li>
@@ -38,47 +37,47 @@ const Login = (props) => {
         <div className="container">
           <ul>
             <li>
-              <a href="./#" title="">
+              <a href="/#" title="">
                 Help Center
               </a>
             </li>
             <li>
-              <a href="./#" title="">
+              <a href="/#" title="">
                 About
               </a>
             </li>
             <li>
-              <a href="./#" title="">
+              <a href="/#" title="">
                 Privacy Policy
               </a>
             </li>
             <li>
-              <a href="./#" title="">
+              <a href="/#" title="">
                 Community Guidelines
               </a>
             </li>
             <li>
-              <a href="./#" title="">
+              <a href="/#" title="">
                 Cookies Policy
               </a>
             </li>
             <li>
-              <a href="./#" title="">
+              <a href="/#" title="">
                 Career
               </a>
             </li>
             <li>
-              <a href="./#" title="">
+              <a href="/#" title="">
                 Forum
               </a>
             </li>
             <li>
-              <a href="./#" title="">
+              <a href="/#" title="">
                 Language
               </a>
             </li>
             <li>
-              <a href="./#" title="">
+              <a href="/#" title="">
                 Copyright Policy
               </a>
             </li>

@@ -43,22 +43,12 @@ class CommentSection extends Component {
         <div className="comment-sec">
           <ul>
             {comments.map((comment, idx) => {
-              const {
-                id,
-                content,
-                comment_date,
-                commented_by_username,
-                commented_by_fullname,
-              } = comment;
+              const { id, content, comment_date, commented_by_username, commented_by_fullname } = comment;
               return (
                 <li key={idx}>
                   <div className="comment-list">
                     <div className="bg-img">
-                      <img
-                        src={"./images/" + commented_by_username + ".png"}
-                        alt=""
-                        style={{ width: "40px", maxWidth: "unset" }}
-                      />
+                      <img src={"./images/" + commented_by_username + ".png"} alt="" style={{ width: "40px", maxWidth: "unset" }} />
                     </div>
                     <div className="comment">
                       <h3>{commented_by_fullname}</h3>
@@ -66,18 +56,13 @@ class CommentSection extends Component {
                         <img src="./images/clock.png" alt="" /> 3 min ago
                       </span>
                       <p>{content}</p>
-                      {/* <a href="./index.html#" title="">
+                      {/* <a href="/#" title="">
                         <i className="fa fa-reply-all"></i>Reply
                       </a> */}
                     </div>
                     {commented_by_username === user.username && (
                       <div>
-                        <a
-                          href=".#"
-                          title=""
-                          data-id={id}
-                          onClick={this.handleDeleteComment}
-                        >
+                        <a href="/#" title="" data-id={id} onClick={this.handleDeleteComment}>
                           <i className="fa fa-trash"></i>
                         </a>
                       </div>
@@ -94,18 +79,8 @@ class CommentSection extends Component {
           </div>
           <div className="comment_box">
             <form id="comment-form">
-              <input
-                type="text"
-                id="comment-content"
-                placeholder="Post a comment"
-                value={this.state.content}
-                onChange={this.handleCommentType}
-              />
-              <button
-                type="button"
-                style={{ marginLeft: "0px" }}
-                onClick={this.handleCommentSubmit}
-              >
+              <input type="text" id="comment-content" placeholder="Post a comment" value={this.state.content} onChange={this.handleCommentType} />
+              <button type="button" style={{ marginLeft: "0px" }} onClick={this.handleCommentSubmit}>
                 Send
               </button>
             </form>

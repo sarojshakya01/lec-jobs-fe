@@ -10,17 +10,14 @@ const UserAccout = (props) => {
     // used jquery for now
     window.$(".user-account-settingss").slideToggle("fast");
     window.$("#message").not(window.$(this).next("#message")).slideUp();
-    window
-      .$("#notification")
-      .not(window.$(this).next("#notification"))
-      .slideUp();
+    window.$("#notification").not(window.$(this).next("#notification")).slideUp();
   };
 
   return (
     <div className="user-account">
       <div className="user-info" onClick={handleToggleUserInfo}>
         <img src={"./images/" + props.user.username + ".png"} alt="" />
-        <a href=".#" title="">
+        <a href="/#" title="">
           {props.user.fullname.substring(0, 4) + ".."}
         </a>
         <i className="la la-sort-down"></i>
@@ -62,23 +59,23 @@ const UserAccout = (props) => {
             </a>
           </li>
           <li>
-            <a href="./index.html#" title="">
+            <a href="/#" title="">
               Privacy
             </a>
           </li>
           <li>
-            <a href="./index.html#" title="">
+            <a href="/#" title="">
               Faqs
             </a>
           </li>
           <li>
-            <a href="./index.html#" title="">
+            <a href="/#" title="">
               Terms &amp; Conditions
             </a>
           </li>
         </ul>
         <h3 className="tc">
-          <a href=".#" title="" onClick={handleLogout}>
+          <a href="/#" title="" onClick={handleLogout}>
             Logout
           </a>
         </h3>

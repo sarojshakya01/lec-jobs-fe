@@ -95,10 +95,7 @@ const RightSide = () => {
             </div>
           </div>
         </div>
-        <div
-          className="widget suggestions full-width"
-          style={{ display: "none" }}
-        >
+        <div className="widget suggestions full-width" style={{ display: "none" }}>
           <div className="sd-title">
             <h3>Most Viewed People</h3>
             <i className="la la-ellipsis-v"></i>
@@ -165,7 +162,7 @@ const RightSide = () => {
               </span>
             </div>
             <div className="view-more">
-              <a href="./index.html#" title="">
+              <a href="/#" title="">
                 View More
               </a>
             </div>

@@ -42,16 +42,13 @@ class Post extends Component {
     event.preventDefault();
     this.setState({ showPost: !this.state.showPost });
     if (!this.state.showPost) {
-      fetch(
-        "http://localhost:5001/api/v1/post/" + this.props.post.id + "/view",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ username: this.props.user.username }),
-        }
-      )
+      fetch("http://localhost:5001/api/v1/post/" + this.props.post.id + "/view", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: this.props.user.username }),
+      })
         .then((resp) => resp.json())
         .then((data) => {
           if (!data.error) {
@@ -70,22 +67,19 @@ class Post extends Component {
   }
 
   handleCommentSubmit(content) {
-    fetch(
-      "http://localhost:5001/api/v1/post/" + this.props.post.id + "/comment",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    fetch("http://localhost:5001/api/v1/post/" + this.props.post.id + "/comment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        comment: {
+          commented_by_username: this.props.user.username,
+          commented_by_fullname: this.props.user.fullname,
+          content: content,
         },
-        body: JSON.stringify({
-          comment: {
-            commented_by_username: this.props.user.username,
-            commented_by_fullname: this.props.user.fullname,
-            content: content,
-          },
-        }),
-      }
-    )
+      }),
+    })
       .then((resp) => resp.json())
       .then((data) => {
         if (!data.error) {
@@ -98,18 +92,12 @@ class Post extends Component {
   }
 
   handleDeleteComment(commentId) {
-    fetch(
-      "http://localhost:5001/api/v1/post/" +
-        this.props.post.id +
-        "/comment/" +
-        commentId,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch("http://localhost:5001/api/v1/post/" + this.props.post.id + "/comment/" + commentId, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((resp) => resp.json())
       .then((data) => {
         if (!data.error) {
@@ -137,32 +125,32 @@ class Post extends Component {
               </div>
             </div>
             <div className="ed-opts">
-              <a href="./index.html#" title="" className="ed-opts-open">
+              <a href="/#" title="" className="ed-opts-open">
                 <i className="la la-ellipsis-v"></i>
               </a>
               <ul className="ed-options">
                 <li>
-                  <a href="./index.html#" title="">
+                  <a href="/#" title="">
                     Edit Post
                   </a>
                 </li>
                 <li>
-                  <a href="./index.html#" title="">
+                  <a href="/#" title="">
                     Unsaved
                   </a>
                 </li>
                 <li>
-                  <a href="./index.html#" title="">
+                  <a href="/#" title="">
                     Unbid
                   </a>
                 </li>
                 <li>
-                  <a href="./index.html#" title="">
+                  <a href="/#" title="">
                     Close
                   </a>
                 </li>
                 <li>
-                  <a href="./index.html#" title="">
+                  <a href="/#" title="">
                     Hide
                   </a>
                 </li>
@@ -182,12 +170,12 @@ class Post extends Component {
             </ul>
             <ul className="bk-links" style={{ display: "none" }}>
               <li>
-                <a href="./index.html#" title="">
+                <a href="/#" title="">
                   <i className="la la-bookmark"></i>
                 </a>
               </li>
               <li>
-                <a href="./index.html#" title="">
+                <a href="/#" title="">
                   <i className="la la-envelope"></i>
                 </a>
               </li>
@@ -197,7 +185,7 @@ class Post extends Component {
             <h3>{post.title}</h3>
             <ul className="job-dt">
               <li>
-                <a href="./index.html#" title="">
+                <a href="/#" title="">
                   {post.job_type}
                 </a>
               </li>
@@ -206,16 +194,14 @@ class Post extends Component {
               </li>
             </ul>
             <p>
-              {this.state.showPost
-                ? post.description
-                : post.description.substring(1, 10) + "... "}
+              {this.state.showPost ? post.description : post.description.substring(1, 10) + "... "}
               {!this.state.showPost && (
-                <a href="#" title="" onClick={this.handleViewPost}>
+                <a href="/#" title="" onClick={this.handleViewPost}>
                   view more
                 </a>
               )}
               {this.state.showPost && (
-                <a href="#" title="" onClick={this.handleViewPost}>
+                <a href="/#" title="" onClick={this.handleViewPost}>
                   {" show less"}
                 </a>
               )}
@@ -223,7 +209,7 @@ class Post extends Component {
             <ul className="skill-tags">
               {post.skills.map((skl, idx2) => (
                 <li key={idx2}>
-                  <a href="./index.html#" title="">
+                  <a href="/#" title="">
                     {skl}
                   </a>
                 </li>
@@ -233,39 +219,24 @@ class Post extends Component {
           <div className="job-status-bar">
             <ul className="like-com">
               <li>
-                <a href="#" onClick={this.handleLikePost}>
-                  <i className="fas fa-heart"></i> Like{" "}
-                  {liked_by.length > 0 ? liked_by.length : ""}
+                <a href="/#" onClick={this.handleLikePost}>
+                  <i className="fas fa-heart"></i> Like {liked_by.length > 0 ? liked_by.length : ""}
                 </a>
-                <img
-                  src="./images/liked-img.png"
-                  alt=""
-                  style={{ display: "none" }}
-                />
+                <img src="./images/liked-img.png" alt="" style={{ display: "none" }} />
                 <span style={{ opacity: 0 }}>{liked_by.length}</span>
               </li>
               <li>
-                <a href="#" className="com" onClick={this.handleCommentClick}>
-                  <i className="fas fa-comment-alt"></i> Comment{" "}
-                  {comments.length}
+                <a href="/#" className="com" onClick={this.handleCommentClick}>
+                  <i className="fas fa-comment-alt"></i> Comment {comments.length}
                 </a>
               </li>
             </ul>
-            <a href="#">
+            <a href="/#">
               <i className="fas fa-eye"></i>Views {viewed_by.length}
             </a>
           </div>
         </div>
-        {this.state.showComment ? (
-          <CommentSection
-            comments={comments}
-            user={user}
-            handleCommentSubmit={this.handleCommentSubmit}
-            handleDeleteComment={this.handleDeleteComment}
-          />
-        ) : (
-          ""
-        )}
+        {this.state.showComment ? <CommentSection comments={comments} user={user} handleCommentSubmit={this.handleCommentSubmit} handleDeleteComment={this.handleDeleteComment} /> : ""}
       </div>
     );
   }

@@ -3,7 +3,7 @@ const Nav = () => {
     <nav>
       <ul>
         <li>
-          <a href="./index.html" title="">
+          <a href="/#" title="">
             <span>
               <img src="./images/icon1.png" alt="" />
             </span>
@@ -20,7 +20,7 @@ const Nav = () => {
           <div className="notification-box msg" id="message">
             <div className="nt-title">
               <h4>Setting</h4>
-              <a href="./index.html#" title="">
+              <a href="/#" title="">
                 Clear all
               </a>
             </div>
@@ -31,14 +31,11 @@ const Nav = () => {
                 </div>
                 <div className="notification-info">
                   <h3>
-                    <a href="./messages.html" title="">
+                    <a href="/#" title="">
                       Jassica William
                     </a>
                   </h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do.
-                  </p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
                   <span>2 min ago</span>
                 </div>
               </div>
@@ -48,7 +45,7 @@ const Nav = () => {
                 </div>
                 <div className="notification-info">
                   <h3>
-                    <a href="./messages.html" title="">
+                    <a href="/#" title="">
                       Jassica William
                     </a>
                   </h3>
@@ -62,20 +59,16 @@ const Nav = () => {
                 </div>
                 <div className="notification-info">
                   <h3>
-                    <a href="./messages.html" title="">
+                    <a href="/#" title="">
                       Jassica William
                     </a>
                   </h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempo incididunt ut labore et dolore magna
-                    aliqua.
-                  </p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempo incididunt ut labore et dolore magna aliqua.</p>
                   <span>2 min ago</span>
                 </div>
               </div>
               <div className="view-all-nots">
-                <a href="./messages.html" title="">
+                <a href="/#" title="">
                   View All Messsages
                 </a>
               </div>
